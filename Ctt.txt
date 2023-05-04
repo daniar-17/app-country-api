@@ -1,0 +1,7 @@
+# Use Laravel Version 8 
+# Template Base Bootstrap 
+
+method getApi in Controller to testApi with dd
+method index in Controller to show data api to blade
+
+name in Github : app-country-api
