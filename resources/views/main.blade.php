@@ -111,14 +111,14 @@
     <script src="{{asset('assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
     <script src="{{asset('assets/js/plugins.js')}}"></script>
 
+    <!-- prismjs plugin -->
+    <script src="{{asset('assets/libs/prismjs/prism.js')}}"></script>
+
     <!--Swiper slider js-->
     <script src="{{asset('assets/libs/swiper/swiper-bundle.min.js')}}"></script>
 
     <!-- swiper.init js -->
     <script src="{{asset('assets/js/pages/swiper.init.js')}}"></script>
-
-    <!-- prismjs plugin -->
-    <script src="{{asset('assets/libs/prismjs/prism.js')}}"></script>
     
     <!-- rater-js plugin -->
     <script src="{{asset('assets/libs/rater-js/index.js')}}"></script>

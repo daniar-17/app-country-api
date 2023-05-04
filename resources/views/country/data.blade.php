@@ -32,7 +32,7 @@
                                 <div class="swiper-slide">
                                     <div class="p-5">
                                         <div style="text-align: center;">
-                                            <img src="{{ $item->flags->png }}" alt="" class="img-fluid rounded"/>
+                                            <img src="{{ $item->flags->png }}" alt="" class="img-thumbnail rounded" width="250"/>
                                         </div>
                                         <br>
                                         <p>Capital : {{ empty($item->capital[0]) ? '' : $item->capital[0]}}</p>
@@ -58,6 +58,7 @@
                                             <i class="ri-star-fill ri-lg"></i>
                                             <i class="ri-star-fill ri-lg"></i>
                                             <i class="ri-star-fill ri-lg"></i>
+                                            <div id="basic-rater" dir="ltr"></div>
                                         </div>
                                         <button type="button" class="btn btn-primary waves-effect waves-light" style="width: 100%">Review</button>
                                     </div>
