@@ -5,9 +5,18 @@
 @section('content')
   <div class="card">
     <div class="card-header">
-        <div class="d-flex align-items-center gap-2">
-            <input type="text" class="form-control" name="search" id="search" placeholder="Search..." style="width: 25%;">
-            <button type="submit" class="btn btn-primary rounded-pill"> Search</button>
+        <div class="d-flex align-items-center">
+            <form action="{{ url('country/search') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="col-10">
+                        <input type="text" class="form-control" name="search" id="search" placeholder="Search..." value="{{ $name }}">
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary rounded-pill"> Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <!-- end card header -->
@@ -28,14 +37,14 @@
                                     <p>Curency : 
                                         @if (!empty($item->currencies))
                                             @foreach ( $item->currencies as $key => $val )
-                                                {{ $key }} : {{ $val->name }}
+                                                {{ $val->name }},
                                             @endforeach
                                         @endif
                                     </p>
                                     <p>Language : 
                                         @if (!empty($item->languages))
                                             @foreach ( $item->languages as $key => $val )
-                                                {{ $key }} : {{ $val }}
+                                                {{ $val }}, 
                                             @endforeach
                                         @endif
                                     </p>

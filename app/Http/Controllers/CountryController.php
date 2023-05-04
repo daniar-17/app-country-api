@@ -10,12 +10,29 @@ class CountryController extends Controller
     public function index()
     {
         $client = new Client();
+        $name = "";
         $url = "https://restcountries.com/v3.1/all";
         $response = $client->request('GET', $url, [
             'verify'  => false,
         ]);
         $responseBody = json_decode($response->getBody());
-        return view('country.data', compact('responseBody'));
+        return view('country.data', compact('responseBody','name'));
+    }
+
+    public function search(Request $request)
+    {
+        $client = new Client();
+        $name = $request->search;
+        if($name == null || $name == ""){
+            $url = "https://restcountries.com/v3.1/all";
+        }else{
+            $url = "https://restcountries.com/v3.1/name/".$name;
+        }
+        $response = $client->request('GET', $url, [
+            'verify'  => false,
+        ]);
+        $responseBody = json_decode($response->getBody());
+        return view('country.data', compact('responseBody', 'name'));
     }
 
     public function getApi()
@@ -26,21 +43,7 @@ class CountryController extends Controller
             'verify'  => false,
         ]);
         $responseBody = json_decode($response->getBody());
-        // dd($responseBody);
-        foreach ($responseBody as $key) {
-            if(empty($key->region)){
-                echo "Tidak Ada";
-            }else{
-                echo "Ada";
-            }
-        }
-        // echo $responseBody['region'];
-        // $test = $responseBody['status'] ?? null;
-        // if($test){
-        //     echo "Ada " .$test;
-        // }else{
-        //     echo "Tidak Ada " .$test;
-        // }
+        dd($responseBody);
     }
     //LastLine
 }
