@@ -17,25 +17,37 @@
             <div class="card">
                 <div class="card-body">
                     <!-- Swiper -->
-                    <div class="swiper navigation-swiper rounded">
+                    <div class="swiper pagination-progress-swiper rounded">
                         <div class="swiper-wrapper">
-                            @foreach ( $responseBody as $item )
-                            <div class="swiper-slide">
-                                <img src="{{ $item->flags->png }}" alt="" class="img-fluid" /><br>
-                                <p>Capital : {{ $item->capital[0] }}</p>
-                                <p>Continent : {{ $item->continents[0] }}</p>
-                                <p>Population : {{ $item->population }}</p>
-                                <p>Curency : {{ $item->currencies->IDR->name }}</p>
-                                <p>Language : {{ $item->languages->ind }}</p>
-                                <div>
-                                    <i class="ri-star-fill text-warning ri-lg"></i>
-                                    <i class="ri-star-fill text-warning ri-lg"></i>
-                                    <i class="ri-star-fill ri-lg"></i>
-                                    <i class="ri-star-fill ri-lg"></i>
-                                    <i class="ri-star-fill ri-lg"></i>
+                            @foreach ( $responseBody as $item )  
+                                <div class="swiper-slide">
+                                    <img src="{{ $item->flags->png }}" alt="" class="img-fluid" /><br>
+                                    <p>Capital : {{ empty($item->capital[0]) ? '' : $item->capital[0]}}</p>
+                                    <p>Continent : {{ empty($item->continents[0]) ? '' : $item->continents[0]}}</p>
+                                    <p>Population : {{ $item->population }}</p>
+                                    <p>Curency : 
+                                        @if (!empty($item->currencies))
+                                            @foreach ( $item->currencies as $key => $val )
+                                                {{ $key }} : {{ $val->name }}
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                    <p>Language : 
+                                        @if (!empty($item->languages))
+                                            @foreach ( $item->languages as $key => $val )
+                                                {{ $key }} : {{ $val }}
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                    <div>
+                                        <i class="ri-star-fill text-warning ri-lg"></i>
+                                        <i class="ri-star-fill text-warning ri-lg"></i>
+                                        <i class="ri-star-fill ri-lg"></i>
+                                        <i class="ri-star-fill ri-lg"></i>
+                                        <i class="ri-star-fill ri-lg"></i>
+                                    </div>
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" style="width: 100%">Review</button>
                                 </div>
-                                <button type="button" class="btn btn-primary waves-effect waves-light" style="width: 100%">Review</button>
-                            </div>
                             @endforeach
                         </div>
                         <div class="swiper-button-next bg-white shadow"></div>

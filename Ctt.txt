@@ -7,3 +7,10 @@ method index in Controller to show data api to blade
 name in Github : app-country-api
 
 Api : https://restcountries.com/#endpoints-latest-added-enpoint
+
+https://laracasts.com/discuss/channels/laravel/print-array-in-blade
+https://www.tutorialrepublic.com/codelab.php?topic=php&file=display-each-key-value-of-json-object
+https://stackoverflow.com/questions/68036520/how-to-echo-key-name-and-key-value-from-json-decode-in-laravel-blade
+
+<p>Capital : {{ empty($item->capital[0]) ? '' : $item->capital[0]}}</p> => empty in code to check exist in json blade laravel
+
