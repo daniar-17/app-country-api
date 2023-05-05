@@ -20,7 +20,12 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
-    <link href="{{asset('assets/libs/swiper/swiper-bundle.min.css')}}" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
 
     <!-- Layout config Js -->
     <script src="{{asset('assets/js/layout.js')}}"></script>
@@ -114,19 +119,14 @@
     <!-- prismjs plugin -->
     <script src="{{asset('assets/libs/prismjs/prism.js')}}"></script>
 
-    <!--Swiper slider js-->
-    <script src="{{asset('assets/libs/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-    <!-- swiper.init js -->
-    <script src="{{asset('assets/js/pages/swiper.init.js')}}"></script>
-    
-    <!-- rater-js plugin -->
-    <script src="{{asset('assets/libs/rater-js/index.js')}}"></script>
-    <!-- rating init -->
-    <script src="{{asset('assets/js/pages/rating.init.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 
     <!-- App js -->
-    <script src="{{asset('assets/js/app.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/app.js')}}"></script> --}}
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 
     @stack('addon-script')
   </body>

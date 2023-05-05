@@ -14,3 +14,14 @@ https://stackoverflow.com/questions/68036520/how-to-echo-key-name-and-key-value-
 
 <p>Capital : {{ empty($item->capital[0]) ? '' : $item->capital[0]}}</p> => empty in code to check exist in json blade laravel
 
+# Rating Start 
+https://codepen.io/hesguru/pen/BaybqXv
+
+# Swiper slider 
+https://swiperjs.com/demos#pagination-progress 
+
+# Add Param in Ajax from serialize form
+https://stackoverflow.com/questions/10398783/jquery-serialize-form-and-other-parameters
+
+~ Jika ada javascript(source js) yang tidak berfungsi dari suatu project kemungkinan dia bentrok dengan js yang lain, jadi coba comment yang tidak perlu dulu 
+

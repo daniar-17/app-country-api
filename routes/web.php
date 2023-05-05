@@ -21,6 +21,8 @@ Route::get('/', function () {
 
 Route::get('/country', [CountryController::class, 'index'])->name('country');
 Route::post('/country/search', [CountryController::class, 'search'])->name('country-search');
+Route::post('/country/review', [CountryController::class, 'review'])->name('country-review');
+
 Route::get('/country_api', [CountryController::class, 'getApi'])->name('country-api');
 
 
