@@ -25,3 +25,7 @@ https://stackoverflow.com/questions/10398783/jquery-serialize-form-and-other-par
 
 ~ Jika ada javascript(source js) yang tidak berfungsi dari suatu project kemungkinan dia bentrok dengan js yang lain, jadi coba comment yang tidak perlu dulu 
 
+# Add Data Base : app-country-api 
+In the Database there is Code CCN3 and Value Review Data.
+
+# Folder : backupFile there is backup file

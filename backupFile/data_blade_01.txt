@@ -1,0 +1,145 @@
+@extends('main')
+
+@section('title_content','Country')
+
+@push('addon-css')
+    <style>
+        .rate {
+            float: left;
+            height: 46px;
+        }
+        .rate:not(:checked) > input {
+            position:absolute;
+            top:-9999px;
+        }
+        .rate:not(:checked) > label {
+            float:right;
+            width:1em;
+            overflow:hidden;
+            white-space:nowrap;
+            cursor:pointer;
+            font-size:30px;
+            color:#ccc;
+        }
+        .rate:not(:checked) > label:before {
+            content: '★ ';
+        }
+        .rate > input:checked ~ label {
+            color: #ffc700;    
+        }
+        .rate:not(:checked) > label:hover,
+        .rate:not(:checked) > label:hover ~ label {
+            color: #deb217;  
+        }
+        .rate > input:checked + label:hover,
+        .rate > input:checked + label:hover ~ label,
+        .rate > input:checked ~ label:hover,
+        .rate > input:checked ~ label:hover ~ label,
+        .rate > label:hover ~ input:checked ~ label {
+            color: #c59b08;
+        }
+
+        swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        swiper-slide {
+            /* text-align: center;
+            font-size: 18px; */
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+@endpush
+
+@section('content')
+  <div class="card">
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+            <form action="{{ url('country/search') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="col-10">
+                        <input type="text" class="form-control" name="search" id="search" placeholder="Search..." value="{{ $name }}">
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary rounded-pill"> Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end card header -->
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Swiper -->
+                    <swiper-container class="mySwiper" pagination="true" pagination-type="progressbar" navigation="true">
+                        @foreach ( $responseBody as $item ) 
+                            <swiper-slide>
+                                <div class="p-5">
+                                    <div style="text-align: center;">
+                                        <img src="{{ $item->flags->png }}" alt="" class="img-thumbnail rounded" width="250"/>
+                                    </div>
+                                    <br>
+                                    <p>Capital : {{ empty($item->capital[0]) ? '' : $item->capital[0]}}</p>
+                                    <p>Continent : {{ empty($item->continents[0]) ? '' : $item->continents[0]}}</p>
+                                    <p>Population : {{ $item->population }}</p>
+                                    <p>Curency : 
+                                        @if (!empty($item->currencies))
+                                            @foreach ( $item->currencies as $key => $val )
+                                                {{ $val->name }},
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                    <p>Language : 
+                                        @if (!empty($item->languages))
+                                            @foreach ( $item->languages as $key => $val )
+                                                {{ $val }}, 
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rate" value="5"/>
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rate" value="4"/>
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rate" value="3"/>
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rate" value="2"/>
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rate" value="1"/>
+                                        <label for="star1" title="text">1 star</label>
+                                    </div>
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" style="width: 100%">Review</button>
+                                </div>
+                            </swiper-slide>
+                        @endforeach
+                    </swiper-container>
+                </div><!-- end card-body -->
+            </div><!-- end card -->
+        </div>
+    </div>
+  <!-- end card-body -->
+  </div>
+@endsection
+
+@push('addon-script')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //Last Line Document Ready
+        });
+    </script>
+@endpush
