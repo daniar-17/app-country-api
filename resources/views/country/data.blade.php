@@ -149,7 +149,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form id="add_form" name="add_form" action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="text" class="form-control" name="codeCcn3" id="codeCcn3" hidden>
                     <div class="mb-3" style="text-align: center;">
@@ -181,7 +181,7 @@
                         </div>
                     </div>
                     <div class="text-end">
-                        <button type="submit" class="btn btn-primary">Send Review</button>
+                        <button type="button" id="btn-review" class="btn btn-primary" data-url="{{ url('country/review') }}">Send Review</button>
                     </div>
                 </form>
             </div>
@@ -223,10 +223,12 @@
 
             //Function to Submit
             $('#btn-review').click(function (){
-                var ccn3 = $(this).attr('data-ccn3');
-                var rate = $(`input[name="rate${ccn3}"]:checked`).val();
-                var param = $('#add_form').serialize() + `&ccn3=${ccn3}&rate=${rate}`;
+                var param = $('#add_form').serialize();
                 var url = $(this).attr('data-url');
+                if (!$("input[name='rate']").is(':checked')) {
+                    errMsg("Review Can't be Empty!");
+                    return false;
+                }
                 $.ajax({
                     type: "POST",
                     dataType: "json",
@@ -237,6 +239,9 @@
                             errMsg(val['info']);
                         }else{
                             successMsg(val['info'])
+                            setTimeout(function() { 
+                                window.location.reload();
+                            }, 1700);
                         }
                     },
                     error: function(val) {

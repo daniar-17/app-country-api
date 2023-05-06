@@ -44,7 +44,7 @@ class CountryController extends Controller
 
     public function review(Request $request)
     {
-        DB::table('country')->where('ccn3', $request->ccn3)->update([
+        DB::table('country')->where('ccn3', $request->codeCcn3)->update([
             'star' => $request->rate
         ]);
 
@@ -64,7 +64,7 @@ class CountryController extends Controller
         $responseBody = json_decode($response->getBody());
         dd($responseBody);
 
-        // To Insert In Table
+        // To Insert In Table From API RestCountries
         // foreach($responseBody as $item){
         //     DB::table('country')->insert([
         //         'ccn3' => $item->ccn3,
