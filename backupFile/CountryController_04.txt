@@ -26,24 +26,19 @@ class CountryController extends Controller
     public function search(Request $request)
     {
         $countryDb = DB::table('country')->get();
+
         $client = new Client();
         $name = $request->search;
-        try {
-            if($name == null || $name == ""){
-                $url = "https://restcountries.com/v3.1/all?fields=ccn3,flags,capital,continents,population,currencies,languages,name";
-            }else{
-                $url = "https://restcountries.com/v3.1/name/".$name;
-            }
-            $response = $client->request('GET', $url, [
-                'verify'  => false,
-            ]);
-            $responseBody = json_decode($response->getBody());
-            return view('country.data', compact('responseBody', 'name','countryDb'));
-        } catch (RequestException $ex) {
-            return view('country.data_not_found', compact('name'));
+        if($name == null || $name == ""){
+            $url = "https://restcountries.com/v3.1/all?fields=ccn3,flags,capital,continents,population,currencies,languages,name";
+        }else{
+            $url = "https://restcountries.com/v3.1/name/".$name;
         }
-
-        
+        $response = $client->request('GET', $url, [
+            'verify'  => false,
+        ]);
+        $responseBody = json_decode($response->getBody());
+        return view('country.data', compact('responseBody', 'name','countryDb'));
     }
 
     public function review(Request $request)
