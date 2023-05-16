@@ -48,6 +48,18 @@
                 <span data-key="t-widgets">Country</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link menu-link" href="{{ url('view_circle') }}">
+                <i class="mdi mdi-camera-outline"></i>
+                <span data-key="t-widgets">360 View</span>
+              </a>
+            </li>
+            {{-- <li class="nav-item">
+              <a class="nav-link menu-link" href="{{ url('whatsapp') }}">
+                <i class="mdi mdi-whatsapp"></i>
+                <span data-key="t-widgets">WhatsApps</span>
+              </a>
+            </li> --}}
           </ul>
         </div>
         <!-- Sidebar -->
