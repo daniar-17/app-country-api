@@ -44,7 +44,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link menu-link" href="{{ url('country') }}">
-                <i class="mdi mdi-truck-fast-outline"></i>
+                <i class="mdi mdi-flag-outline"></i>
                 <span data-key="t-widgets">Country</span>
               </a>
             </li>
