@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ViewCircleController;
+use App\Http\Controllers\WAController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,7 @@ Route::get('/whatsapp', [WhatsappController::class, 'index'])->name('whatsapp');
 Route::post('/whatsapp/send', [WhatsappController::class, 'send'])->name('whatsapp-send');
 
 Route::get('/view_circle', [ViewCircleController::class, 'index'])->name('view-circle');
+
+Route::get('/wa', [WAController::class, 'index'])->name('wa');
 
 

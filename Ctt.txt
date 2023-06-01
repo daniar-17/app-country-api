@@ -35,3 +35,6 @@ https://www.youtube.com/watch?v=5lrLlcoRFKI
 
 # Street View Maps 360 
 https://www.lcpmedia.com/how-to-embed-google-virtual-tour-on-your-website
+
+# Whatsapp Laravel with Foonte
+https://fonnte.com/tutorial/mengirim-pesan-whatsapp-php-api/
